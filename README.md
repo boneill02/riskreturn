@@ -5,4 +5,4 @@ Simple webpage to calculate return on investment compared to NASDAQ
 ## License
 
 Copyright (c) 2021 Ben O'Neill <ben@benoneill.xyz>
-Licensed under AGPL 3.0 (see LICENSE for terms).
+Source code is licensed under AGPL 3.0 unless otherwise noted (see LICENSE for terms).

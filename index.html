@@ -1,36 +1,40 @@
-<script src="rate.js"></script>
-<script src="data.js"></script>
-<script src="riskreturn.js"></script>
-<style>
-#inform {
-	text-align: center;
-	padding: 10pt;
-}
-</style>
+<html>
+<head>
+	<script src="rate.js"></script>
+	<script src="data.js"></script>
+	<script src="riskreturn.js"></script>
+	<title>Risk Return Calculator</title>
+</head>
+<body>
+	<style>
+		#inform {
+		text-align: center;
+		padding: 10pt;
+		}
+	</style>
+	<h1>Risk Return Calculator</h1>
 
-<title>Risk Return Calculator</title>
+	<form id="inform">
+		<label for="ubegin">Monthly Investment:</label><br>
+		<input type="text" id="ubegin" name="ubegin"><br><br>
+		<label for="sdate">Start Date (between 04/1999 and 08/2020, in that format):</label><br>
+		<input type="text" id="sdate" name="sdate"><br><br>
+		<label for="edate">End Date (between 04/1999 and 08/2020, in that format):</label><br>
+		<input type="text" id="edate" name="edate"><br><br>
+		<input type="button" onclick="riskreturncalc()" value="Submit">
+	</form>
 
-<h1>Risk Return Calculator</h1>
-
-<form id="inform">
-  <label for="ubegin">Monthly Investment:</label><br>
-  <input type="text" id="ubegin" name="ubegin"><br><br>
-  <label for="sdate">Start Date (between 04/1999 and 08/2020, in that format):</label><br>
-  <input type="text" id="sdate" name="sdate"><br><br>
-  <label for="edate">End Date (between 04/1999 and 08/2020, in that format):</label><br>
-  <input type="text" id="edate" name="edate"><br><br>
-  <input type="button" onclick="riskreturncalc()" value="Submit">
-</form>
-
-<div class="result">
-	<h2>Your results:</h2>
-	<ul>
-		<li id="user_end">Ending Value: Nothing yet</li>
-		<li id="user_return">Average Annual Return: Nothing yet</li>
-	</ul>
-	<h2>NASDAQ results:</h2>
-	<ul>
-		<li id="nasdaq_end">Ending Value: Nothing yet</li>
-		<li id="nasdaq_return">Average Annual Return: Nothing yet</li>
-	</ul>
-</div>
+	<div class="result">
+		<h2>Your results:</h2>
+		<ul>
+			<li id="user_end">Ending Value: Nothing yet</li>
+			<li id="user_return">Average Annual Return: Nothing yet</li>
+		</ul>
+		<h2>NASDAQ results:</h2>
+		<ul>
+			<li id="nasdaq_end">Ending Value: Nothing yet</li>
+			<li id="nasdaq_return">Average Annual Return: Nothing yet</li>
+		</ul>
+	</div>
+</body>
+</html>

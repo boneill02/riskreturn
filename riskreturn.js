@@ -17,9 +17,13 @@ var result_less = 'Your return is less than the index. Lengthen your investment 
 var result_more = 'Nice! You beat the Nasdaq!';
 var result_negative = 'Your return is negative! This is the downside of risk. Change your dates or lengthen your investment period to see what happens.';
 
-function round(num, places) {
-	var factor = Math.pow(10, places)
-	return Math.round(num * factor) / factor
+function numfmt(num) {
+	/* round to nearest hundredth */
+	//var rounded = Math.round(num * 100) / 100
+	
+	return Intl.NumberFormat().format(parseFloat(num).toFixed(2));
+	/* add commas */
+	
 }
 
 function riskreturncalc() {
@@ -69,12 +73,12 @@ function riskreturncalc() {
 	nasdaq_end = monthly_data[end_date_index][2];
 	nasdaq_return = RATE(months, 0, (nasdaq_begin * -1), nasdaq_end) * 12;
 
-	document.getElementById("user_invested").innerHTML = "$" + (monthly_in * months);
-	document.getElementById("user_end").innerHTML = "$" + round(user_end, 2);
-	document.getElementById("user_return").innerHTML = "" + round(user_return * 100, 2) + "%";
-	document.getElementById("nasdaq_begin").innerHTML = "$" + round(nasdaq_begin, 2);
-	document.getElementById("nasdaq_end").innerHTML = "$" + round(nasdaq_end, 2);
-	document.getElementById("nasdaq_return").innerHTML = "" + round(nasdaq_return * 100, 2) + "%";
+	document.getElementById("user_invested").innerHTML = "$" + numfmt(monthly_in * months);
+	document.getElementById("user_end").innerHTML = "$" + numfmt(user_end, 2);
+	document.getElementById("user_return").innerHTML = numfmt(user_return * 100, 2) + "%";
+	document.getElementById("nasdaq_begin").innerHTML = "$" + numfmt(nasdaq_begin, 2);
+	document.getElementById("nasdaq_end").innerHTML = "$" + numfmt(nasdaq_end, 2);
+	document.getElementById("nasdaq_return").innerHTML = numfmt(nasdaq_return * 100, 2) + "%";
 
 	if (user_return > nasdaq_return && user_return > 0) {
 		document.getElementById("message").innerHTML = result_more;

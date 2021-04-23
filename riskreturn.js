@@ -1,3 +1,10 @@
+/*!
+ * @author Ben O'Neill <ben@benoneill.xyz>
+ * @license
+ * Copyright (c) 2021 Ben O'Neill <ben@benoneill.xyz>
+ * Licensed under the GNU AGPL v3.
+ */
+
 var user_begin = 0;
 var user_end = 0;
 var user_return = 0;

@@ -8,9 +8,7 @@
 		body { margin: 1em; padding: 0; background-color: #222; color: #eee; font: 1em sans-serif; }
 		#inform { text-align: center; padding: 10pt; }
 		#head { text-align: center; }
-		.dropdown { position: relative; display: inline-block; }
-		.dropdown-content { display: none; position: absolute; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); padding: 12px 16px; z-index: 1;  }
-.dropdown:hover .dropdown-content { display: block; }
+		#ubegin { width: 5em; }
 	</style>
 </head>
 <body>
@@ -21,16 +19,15 @@
 	<br><br>
 	<form id="inform">
 		<label for="ubegin">Monthly Investment:</label><br>
-		<input type="text" id="ubegin" name="ubegin"><br><br>
-
-		<label for="sdate">Start Date:</label><br>
-		<select id="sdate">
-		</select>
+		<input type="text" id="ubegin">
 		<br><br>
 
-		<label for="edate">End Date:</label><br>
-		<select id="edate">
-		</select>
+		<label for="sdate">Start Date (any month from 04/1999 to 03/2021 in that format):</label><br>
+		<input type="text" id="sdate">
+		<br><br>
+
+		<label for="edate">End Date: (any month from 04/1999 to 03/2021 in that format):</label><br>
+		<input type="text" id="edate">
 		<br><br>
 
 		<input type="button" onclick="riskreturncalc()" value="Calculate">
@@ -38,11 +35,13 @@
 	<div class="result">
 		<h2>Your results:</h2>
 		<ul>
+			<li>Total Invested: <b id="user_invested">Nothing yet</b></li>
 			<li>Ending Value: <b id="user_end">Nothing yet</b></li>
 			<li>Average Annual Return: <b id="user_return">Nothing yet</b></li>
 		</ul>
 		<h2>NASDAQ results:</h2>
 		<ul>
+			<li>Beginning value: <b id="nasdaq_begin">Nothing yet</b></li>
 			<li>Ending Value: <b id="nasdaq_end">Nothing yet</b></li>
 			<li>Average Annual Return: <b id="nasdaq_return">Nothing yet</b></li>
 		</ul>

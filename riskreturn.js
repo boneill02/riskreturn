@@ -69,8 +69,10 @@ function riskreturncalc() {
 	nasdaq_end = monthly_data[end_date_index][2];
 	nasdaq_return = RATE(months, 0, (nasdaq_begin * -1), nasdaq_end) * 12;
 
+	document.getElementById("user_invested").innerHTML = "$" + (monthly_in * months);
 	document.getElementById("user_end").innerHTML = "$" + round(user_end, 2);
 	document.getElementById("user_return").innerHTML = "" + round(user_return * 100, 2) + "%";
+	document.getElementById("nasdaq_begin").innerHTML = "$" + round(nasdaq_begin, 2);
 	document.getElementById("nasdaq_end").innerHTML = "$" + round(nasdaq_end, 2);
 	document.getElementById("nasdaq_return").innerHTML = "" + round(nasdaq_return * 100, 2) + "%";
 
@@ -81,15 +83,4 @@ function riskreturncalc() {
 	} else {
 		document.getElementById("message").innerHTML = result_negative;
 	}
-}
-
-var start = document.getElementById("sdate");
-var end = document.getElementById("edate");
-for (var i = 0; i < monthly_data.length; i++) {
-	var option = document.createElement("option");
-	var option2 = document.createElement("option");
-	option.text = monthly_data[i][0];
-	option2.text = monthly_data[i][0];
-	start.add(option)
-	end.add(option2)
 }

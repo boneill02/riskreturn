@@ -1,40 +1,59 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<script src="rate.js"></script>
-	<script src="data.js"></script>
-	<script src="riskreturn.js"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Risk Return Calculator</title>
+	<style>
+		body { margin: 1em; padding: 0; background-color: #222; color: #eee; font: 1em sans-serif; }
+		#inform { text-align: center; padding: 10pt; }
+		#head { text-align: center; }
+		.dropdown { position: relative; display: inline-block; }
+		.dropdown-content { display: none; position: absolute; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); padding: 12px 16px; z-index: 1;  }
+.dropdown:hover .dropdown-content { display: block; }
+	</style>
 </head>
 <body>
-	<style>
-		#inform {
-		text-align: center;
-		padding: 10pt;
-		}
-	</style>
+	<div id="head">
 	<h1>Risk Return Calculator</h1>
-
+	<p id="description">This calculator shows the risk/reward relationship and that steady contributions in an index fund over long investment horizons (10 years or more) can accumulate wealth even through periods of market declines.  This calculator uses historical monthly returns from 1999 to 2021 to show how steady contributions in an index fund can accumulate over time. Enter a monthly investment, a start date, and an end date.  This calculator assumes periodic investments in the QQQ which tracks the Nasdaq index.</p>
+	</div>
+	<br><br>
 	<form id="inform">
 		<label for="ubegin">Monthly Investment:</label><br>
 		<input type="text" id="ubegin" name="ubegin"><br><br>
-		<label for="sdate">Start Date (between 04/1999 and 08/2020, in that format):</label><br>
-		<input type="text" id="sdate" name="sdate"><br><br>
-		<label for="edate">End Date (between 04/1999 and 08/2020, in that format):</label><br>
-		<input type="text" id="edate" name="edate"><br><br>
-		<input type="button" onclick="riskreturncalc()" value="Submit">
-	</form>
 
+		<label for="sdate">Start Date:</label><br>
+		<select id="sdate">
+		</select>
+		<br><br>
+
+		<label for="edate">End Date:</label><br>
+		<select id="edate">
+		</select>
+		<br><br>
+
+		<input type="button" onclick="riskreturncalc()" value="Calculate">
+	</form>
 	<div class="result">
 		<h2>Your results:</h2>
 		<ul>
-			<li id="user_end">Ending Value: Nothing yet</li>
-			<li id="user_return">Average Annual Return: Nothing yet</li>
+			<li>Ending Value: <b id="user_end">Nothing yet</b></li>
+			<li>Average Annual Return: <b id="user_return">Nothing yet</b></li>
 		</ul>
 		<h2>NASDAQ results:</h2>
 		<ul>
-			<li id="nasdaq_end">Ending Value: Nothing yet</li>
-			<li id="nasdaq_return">Average Annual Return: Nothing yet</li>
+			<li>Ending Value: <b id="nasdaq_end">Nothing yet</b></li>
+			<li>Average Annual Return: <b id="nasdaq_return">Nothing yet</b></li>
 		</ul>
 	</div>
+
+	<div class="message">
+		<p id="message"></p>
+	</div>
+
+	<script src="rate.js"></script>
+	<script src="data.js"></script>
+	<script src="riskreturn.js"></script>
 </body>
 </html>

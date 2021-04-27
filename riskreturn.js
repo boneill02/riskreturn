@@ -57,8 +57,8 @@ function riskreturncalc() {
 	var start_data = monthly_data[start_date_index];
 	var end_data = monthly_data[start_date_index];
 	var total_invested = monthly_in * months;
-	var price_by_month = [];
-	var nasdaq_price_by_month = [];
+	var value_by_month = [];
+	var nasdaq_value_by_month = [];
 	var labels = [];
 
 	/* calculate cumulative shares */
@@ -67,8 +67,8 @@ function riskreturncalc() {
 	for (var i = start_date_index; i <= end_date_index; i++) {
 		shares_purchased = (monthly_in / (monthly_data[i][1]));
 		cumulative_shares += shares_purchased;
-		price_by_month.push(cumulative_shares * monthly_data[i][1]);
-		nasdaq_price_by_month.push(monthly_data[i][2]);
+		value_by_month.push(cumulative_shares * monthly_data[i][1]);
+		nasdaq_value_by_month.push(monthly_data[i][2]);
 
 		/* for chart */
 		labels.push(monthly_data[i][0]);
@@ -112,8 +112,8 @@ function riskreturncalc() {
 		labels: labels,
 		datasets: [{
 			axis: 'y',
-			label: 'User Price',
-			data: price_by_month,
+			label: 'User Value',
+			data: value_by_month,
 			fill: false,
 			backgroundColor: [
 				'rgba(255, 255, 132, 0.2)',
@@ -121,11 +121,12 @@ function riskreturncalc() {
 			borderColor: [
 				'rgb(200, 0, 200)',
 			],
-			borderWidth: 3
+			borderWidth: 2,
+			yAxisID: 'user_value'
 		}, {
 			axis: 'y',
-			label: 'NASDAQ Price',
-			data: nasdaq_price_by_month,
+			label: 'NASDAQ Value',
+			data: nasdaq_value_by_month,
 			fill: false,
 			backgroundColor: [
 				'rgba(75, 192, 192, 0.2)',
@@ -133,16 +134,23 @@ function riskreturncalc() {
 			borderColor: [
 				'rgb(200, 0, 10)',
 			],
-			borderWidth: 3
-		}]};
+			borderWidth: 2,
+			yAxisID: 'nasdaq_value'
+		}
+		]};
 
 	var graph = new Chart(ctx, {
 		type: 'line',
 		data: data,
 		options: {
 			scales: {
-				x: {
-					beginAtZero: true
+				'user_value': {
+					type: 'linear',
+					position: 'left'
+				},
+				'nasdaq_value': {
+					type: 'linear',
+					position: 'right'
 				}
 			}
 		}

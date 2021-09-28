@@ -1,6 +1,7 @@
 # riskreturn
 
-Simple webpage to calculate return on investment compared to NASDAQ
+Simple webpage to calculate return on investment compared to NASDAQ.
+[Demo](https://benoneill.xyz/demos/riskreturn/).
 
 ## License
 

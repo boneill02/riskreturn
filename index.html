@@ -4,12 +4,14 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Risk Return Calculator</title>
+	<script src="https://cdn.plot.ly/plotly-2.26.0.min.js" charset="utf-8"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<style>
 		body { margin: 1em; padding: 0; background-color: #eee; color: #222; font: 1em sans-serif; }
-		#inform { text-align: center; padding: 10pt; }
-		#head { text-align: center; }
 		#ubegin { width: 5em; }
 	</style>
+	<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 	<div id="head">
@@ -18,21 +20,24 @@
 	</div>
 	<br><br>
 	<form id="inform">
-		<label for="ubegin">Monthly Investment:</label><br>
+		<label for="ubegin">Monthly Investment ($):</label>
 		<input type="text" id="ubegin">
 		<br><br>
 
-		<label for="sdate">Start date (any month from 04/1999 to 03/2021 in that format):</label><br>
-		<input type="text" id="sdate">
+		<label for="sdate">Start date:</label>
+		<input type="month" min="1999-04" max="2021-03" id="sdate">
 		<br><br>
 
-		<label for="edate">End date: (any month from 04/1999 to 03/2021 in that format):</label><br>
-		<input type="text" id="edate">
+		<label for="edate">End date:</label>
+		<input type="month" min="1999-05" max="2021-03" id="edate">
 		<br><br>
 
-		<input type="button" onclick="riskreturncalc()" value="Calculate">
+		<input type="button" onclick="riskReturn()" value="Calculate">
 	</form>
-	<div class="result">
+	<div id="result">
+		<div class="message">
+			<p id="message"></p>
+		</div>
 		<h2>Your results:</h2>
 		<ul>
 			<li>Total invested: <b id="user_invested">Nothing yet</b></li>
@@ -45,15 +50,12 @@
 			<li>Ending value: <b id="nasdaq_end">Nothing yet</b></li>
 			<li>Average annual return: <b id="nasdaq_return">Nothing yet</b></li>
 		</ul>
-	</div>
-
-	<div class="message">
-		<p id="message"></p>
+		<canvas id="myChart" width="300" height"300"></canvas>
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
-	<script src="rate.js"></script>
 	<script src="data.js"></script>
+	<script src="rate.js"></script>
 	<script src="riskreturn.js"></script>
 </body>
 </html>
